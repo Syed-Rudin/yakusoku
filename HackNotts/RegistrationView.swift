@@ -11,97 +11,116 @@ struct RegistrationView: View {
     @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
     @State private var email = ""
+    @State private var name = ""  // Added name field
     @State private var password = ""
     @State private var confirmPassword = ""
+    @State private var showError = false
+    @State private var errorMessage = ""
     
     var body: some View {
         ZStack {
-            Color.black
+            LinearGradient(
+                gradient: Gradient(colors: [.customWine, .customDarkPurple]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
             
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .foregroundStyle(.linearGradient(colors: [.pink, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 1000, height: 400)
-                .rotationEffect(.degrees(135))
-                .offset(y: -350)
-            
-            VStack(spacing: 20) {
-                Text("Create Account")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 40, weight: .bold, design: .rounded))
-                    .offset(x: 0, y: -100)
+            VStack(spacing: 32) {
+                // Logo and welcome text
+                VStack(spacing: 16) {
+                    Circle()
+                        .fill(Color.customOrange)
+                        .frame(width: 60, height: 60)
+                        .overlay(
+                            Image(systemName: "person.badge.plus")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(15)
+                                .foregroundColor(.white)
+                        )
+                    
+                    Text("Create Account")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 60)
                 
-                TextField("Email", text: $email)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: email.isEmpty) {
-                        Text("Email")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
+                // Form fields
+                VStack(spacing: 24) {
+                    CustomTextField("Email address", text: $email)
+                    
+                    CustomTextField("Full name", text: $name)
+                    
+                    CustomTextField("Password", text: $password, isSecure: true)
+                    
+                    CustomTextField("Confirm Password", text: $confirmPassword, isSecure: true)
+                }
+                .padding(.horizontal, 24)
                 
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
-                SecureField("Password", text: $password)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: password.isEmpty) {
-                        Text("Password")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
-                SecureField("Confirm Password", text: $confirmPassword)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: confirmPassword.isEmpty) {
-                        Text("Confirm Password")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
+                // Action buttons
                 Button {
-                    if password == confirmPassword {
-                        authManager.register(email: email, password: password)
-                        dismiss() 
-                    }
+                    signUp()
                 } label: {
                     Text("Sign Up")
-                        .bold()
-                        .frame(width: 200, height: 40)
+                        .font(.headline)
+                        .frame(width: 200, height: 50)
                         .background(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.linearGradient(colors: [.red, .pink], startPoint: .top, endPoint: .bottomTrailing))
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.linearGradient(colors: [.customWine, .customRed],
+                                                    startPoint: .leading,
+                                                    endPoint: .bottomTrailing))
                         )
                         .foregroundStyle(.white)
                 }
-                .padding(.top)
-                .offset(y: 100)
+                .disabled(!isFormValid)
+                .opacity(isFormValid ? 1 : 0.6)
+                .offset(y: 40)
                 
                 Button {
-                    dismiss()  // Close registration sheet
+                    dismiss()
                 } label: {
                     Text("Already have an account? Login")
                         .bold()
                         .foregroundStyle(.white)
                 }
                 .padding(.top)
-                .offset(y: 110)
             }
-            .frame(width: 350)
+            .alert("Error", isPresented: $showError) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(errorMessage)
+            }
         }
         .ignoresSafeArea()
     }
+    
+    private var isFormValid: Bool {
+        !email.isEmpty &&
+        !name.isEmpty &&
+        !password.isEmpty &&
+        password == confirmPassword &&
+        password.count >= 6
+    }
+    
+    private func signUp() {
+        if password != confirmPassword {
+            errorMessage = "Passwords don't match"
+            showError = true
+            return
+        }
+        
+        authManager.register(email: email, password: password, name: name) { success, error in
+            if let error = error {
+                errorMessage = error
+                showError = true
+            } else if success {
+                dismiss()
+            }
+        }
+    }
 }
+
 #Preview {
     RegistrationView()
         .environmentObject(AuthManager())
