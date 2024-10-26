@@ -12,6 +12,11 @@ import FirebaseAuth
 class AuthManager: ObservableObject {
     @Published var isLoggedIn = false
     @Published var userID: String = ""
+    private var dataManager: DataManager?
+    
+    func setDataManager(_ dataManager: DataManager) {
+            self.dataManager = dataManager
+    }
     
     init() {
         // Set up Firebase auth listener
@@ -19,6 +24,10 @@ class AuthManager: ObservableObject {
             DispatchQueue.main.async {
                 self.isLoggedIn = user != nil
                 self.userID = user?.uid ?? ""
+                
+                if user != nil {
+                    self.dataManager?.fetchContracts()
+                }
             }
         }
     }
