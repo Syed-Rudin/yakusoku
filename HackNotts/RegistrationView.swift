@@ -16,58 +16,27 @@ struct RegistrationView: View {
     
     var body: some View {
         ZStack {
-            Color.black
+            LinearGradient(
+                gradient: Gradient(colors: [.customRed, .customWine]),
+                startPoint: .leading,
+                endPoint: .trailing
+                )
             
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .foregroundStyle(.linearGradient(colors: [.pink, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 1000, height: 400)
-                .rotationEffect(.degrees(135))
-                .offset(y: -350)
-            
-            VStack(spacing: 20) {
+            VStack(spacing: 32) {
+                //title text
                 Text("Create Account")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 40, weight: .bold, design: .rounded))
-                    .offset(x: 0, y: -100)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
                 
-                TextField("Email", text: $email)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: email.isEmpty) {
-                        Text("Email")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
-                SecureField("Password", text: $password)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: password.isEmpty) {
-                        Text("Password")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
-                SecureField("Confirm Password", text: $confirmPassword)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: confirmPassword.isEmpty) {
-                        Text("Confirm Password")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
+                VStack(spacing: 24) {
+                    CustomTextField("Your Email", text: $email)
+                    
+                    CustomTextField("Password", text: $password, isSecure: true)
+                    
+                    CustomTextField("Confirm Password", text: $confirmPassword, isSecure: true)
+                    
+                }
                 
                 Button {
                     if password == confirmPassword {
@@ -76,15 +45,14 @@ struct RegistrationView: View {
                     }
                 } label: {
                     Text("Sign Up")
-                        .bold()
-                        .frame(width: 200, height: 40)
+                        .font(.headline)
+                        .frame(width: 200, height: 50)
                         .background(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.linearGradient(colors: [.red, .pink], startPoint: .top, endPoint: .bottomTrailing))
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.linearGradient(colors: [.customRed, .customOrange], startPoint: .leading, endPoint: .bottomTrailing))
                         )
                         .foregroundStyle(.white)
                 }
-                .padding(.top)
                 .offset(y: 100)
                 
                 Button {

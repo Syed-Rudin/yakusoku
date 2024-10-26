@@ -51,28 +51,43 @@ struct CustomTextField: View {
         self.title = title
         self.text = text
         self.isSecure = isSecure
+        
+        UITextField.appearance().tintColor = .white
+        UITextField.appearance().textColor = .white
+        UITextView.appearance().textColor = .white
     }
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.gray)
-            
-            if isSecure {
-                SecureField("", text: text)
-                    .textFieldStyle(.plain)
-            } else {
-                TextField("", text: text)
-                    .textFieldStyle(.plain)
+                    if isSecure {
+                        SecureField("", text: text)
+                            .textFieldStyle(.plain)
+                            .foregroundColor(.white) // Text color while typing
+                            .accentColor(.white)     // Cursor color
+                            .colorMultiply(.white)   // Ensures consistent color
+                            .placeholder(when: text.wrappedValue.isEmpty) {
+                                Text(title)
+                                    .foregroundColor(.white.opacity(0.7))
+                            }
+                    } else {
+                        TextField("", text: text)
+                            .textFieldStyle(.plain)
+                            .foregroundColor(.white) // Text color while typing
+                            .accentColor(.white)     // Cursor color
+                            .colorMultiply(.white)   // Ensures consistent color
+                            .placeholder(when: text.wrappedValue.isEmpty) {
+                                Text(title)
+                                    .foregroundColor(.white.opacity(0.7))
+                            }
+                    }
+                    
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.white.opacity(0.5))
+                }
             }
-            
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(.gray.opacity(0.5))
         }
-    }
-}
 
 struct LoginView: View {
     @EnvironmentObject var authManager: AuthManager
@@ -111,9 +126,9 @@ struct LoginView: View {
                 .padding(.top, 60)
 
                 VStack(spacing: 24) {
-                    CustomTextField("Email address", text: $email)
+                    CustomTextField("Your Email", text: $email)
                     
-                    CustomTextField("Password", text: $password, isSecure: true)
+                    CustomTextField("Your Password", text: $password, isSecure: true)
                     
                 }
                 .padding(.horizontal, 24)
