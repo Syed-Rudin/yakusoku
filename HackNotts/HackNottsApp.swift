@@ -10,6 +10,8 @@ import Firebase
 
 @main
 struct HackNottsApp: App {
+    @StateObject var authManager = AuthManager()
+    @StateObject var dataManager = DataManager()
     
     init() {
         FirebaseApp.configure()
@@ -17,7 +19,14 @@ struct HackNottsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            if authManager.isLoggedIn {
+                ContractListView()
+                    .environmentObject(authManager)
+                    .environmentObject(dataManager)
+            } else {
+                LoginView()
+                    .environmentObject(authManager)
+            }
         }
     }
 }
