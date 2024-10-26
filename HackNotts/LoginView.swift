@@ -10,19 +10,12 @@ import Firebase
 import FirebaseAuth
 
 struct LoginView: View {
+    @EnvironmentObject var authManager: AuthManager
     @State private var email = ""
     @State private var password = ""
-    @State private var userIsLoggedIn = false
+    @State private var showRegistration = false  // For showing registration sheet
     
     var body: some View {
-        if userIsLoggedIn {
-            HomepageView()
-        } else {
-            content
-        }
-    }
-    
-    var content: some View {
         ZStack {
             Color.black
             
@@ -33,10 +26,10 @@ struct LoginView: View {
                 .offset(y: -350)
             
             VStack(spacing: 20) {
-                Text("Welcome")
+                Text("Login")  
                     .foregroundStyle(.white)
                     .font(.system(size: 40, weight: .bold, design: .rounded))
-                    .offset(x: -100, y: -100)
+                    .offset(x: 0, y: -100)
                 
                 TextField("Email", text: $email)
                     .foregroundStyle(.white)
@@ -65,9 +58,9 @@ struct LoginView: View {
                     .foregroundStyle(.white)
                 
                 Button {
-                    register()
+                    authManager.login(email: email, password: password)
                 } label: {
-                    Text("Sign up")
+                    Text("Login")
                         .bold()
                         .frame(width: 200, height: 40)
                         .background(
@@ -80,51 +73,29 @@ struct LoginView: View {
                 .offset(y: 100)
                 
                 Button {
-                    login()
+                    showRegistration.toggle()
                 } label: {
-                    Text("Already have an account? Login")
+                    Text("New user? Create account")
                         .bold()
                         .foregroundStyle(.white)
                 }
                 .padding(.top)
                 .offset(y: 110)
-
-
-                
             }
             .frame(width: 350)
-            .onAppear {
-                Auth.auth().addStateDidChangeListener { auth, user in
-                    if user != nil {
-                        userIsLoggedIn.toggle()
-                    }
-                }
-            }
         }
         .ignoresSafeArea()
-    }
-    
-    func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
-    }
-    
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
+        .sheet(isPresented: $showRegistration) {
+            RegistrationView()
+                .environmentObject(authManager)
         }
     }
 }
 
 #Preview {
     LoginView()
+        .environmentObject(AuthManager())
 }
-
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,
