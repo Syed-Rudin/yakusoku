@@ -78,9 +78,8 @@ struct LoginView: View {
     @EnvironmentObject var authManager: AuthManager
     @State private var email = ""
     @State private var password = ""
-    @State private var showRegistration = false  // For showing registration sheet
-    @State private var isLogin = true
-    @State private var alertMessage = ""
+    @State private var showRegistration = false  
+
     
     var body: some View {
         ZStack {
