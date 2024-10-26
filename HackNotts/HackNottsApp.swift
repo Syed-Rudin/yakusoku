@@ -23,6 +23,9 @@ struct HackNottsApp: App {
                 ContractListView()
                     .environmentObject(authManager)
                     .environmentObject(dataManager)
+                    .onAppear {
+                        authManager.setDataManager(dataManager)
+                    }
             } else {
                 LoginView()
                     .environmentObject(authManager)
