@@ -9,67 +9,143 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 
+extension Color {
+    static let customDarkPurple = Color(hex: "#22092C")
+    static let customWine = Color(hex: "#872341")
+    static let customRed = Color(hex: "#BE3144")
+    static let customOrange = Color(hex: "#F05941")
+}
+
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue:  Double(b) / 255,
+            opacity: Double(a) / 255
+        )
+    }
+}
+
+struct CustomTextField: View {
+    let title: String
+    let text: Binding<String>
+    let isSecure: Bool
+    
+    init(_ title: String, text: Binding<String>, isSecure: Bool = false) {
+        self.title = title
+        self.text = text
+        self.isSecure = isSecure
+        
+        UITextField.appearance().tintColor = .white
+        UITextField.appearance().textColor = .white
+        UITextView.appearance().textColor = .white
+    }
+
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+                    if isSecure {
+                        SecureField("", text: text)
+                            .textFieldStyle(.plain)
+                            .foregroundColor(.white) // Text color while typing
+                            .accentColor(.white)     // Cursor color
+                            .colorMultiply(.white)   // Ensures consistent color
+                            .placeholder(when: text.wrappedValue.isEmpty) {
+                                Text(title)
+                                    .foregroundColor(.white.opacity(0.7))
+                            }
+                    } else {
+                        TextField("", text: text)
+                            .textFieldStyle(.plain)
+                            .foregroundColor(.white) // Text color while typing
+                            .accentColor(.white)     // Cursor color
+                            .colorMultiply(.white)   // Ensures consistent color
+                            .placeholder(when: text.wrappedValue.isEmpty) {
+                                Text(title)
+                                    .foregroundColor(.white.opacity(0.7))
+                            }
+                    }
+                    
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.white.opacity(0.5))
+                }
+            }
+        }
+
 struct LoginView: View {
     @EnvironmentObject var authManager: AuthManager
     @State private var email = ""
     @State private var password = ""
-    @State private var showRegistration = false  // For showing registration sheet
+    @State private var showRegistration = false  
+
     
     var body: some View {
         ZStack {
-            Color.black
+            LinearGradient(
+                gradient: Gradient(colors: [.customWine, .customDarkPurple]),
+                startPoint: .leading,
+                endPoint: .trailing
+                )
             
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .foregroundStyle(.linearGradient(colors: [.pink, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 1000, height: 400)
-                .rotationEffect(.degrees(135))
-                .offset(y: -350)
-            
-            VStack(spacing: 20) {
-                Text("Login")  
-                    .foregroundStyle(.white)
-                    .font(.system(size: 40, weight: .bold, design: .rounded))
-                    .offset(x: 0, y: -100)
+            VStack(spacing: 32){
+                //logo and welcome text
+                VStack(spacing: 16) {
+                    Circle()
+                        .fill(Color.customOrange)
+                        .frame(width: 60, height: 60)
+                        .overlay(
+                            Image(systemName: "dollarsign.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(15)
+                                .foregroundColor(.white)
+                        )
+                    
+                    Text("Welcome back" )
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 60)
+
+                VStack(spacing: 24) {
+                    CustomTextField("Your Email", text: $email)
+                    
+                    CustomTextField("Your Password", text: $password, isSecure: true)
+                    
+                }
+                .padding(.horizontal, 24)
                 
-                TextField("Email", text: $email)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: email.isEmpty) {
-                        Text("Email")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
-                SecureField("Password", text: $password)
-                    .foregroundStyle(.white)
-                    .textFieldStyle(.plain)
-                    .placeholder(when: password.isEmpty) {
-                        Text("Password")
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundStyle(.white)
-                
+                // Action Buttons
                 Button {
                     authManager.login(email: email, password: password)
                 } label: {
                     Text("Login")
-                        .bold()
-                        .frame(width: 200, height: 40)
+                        .font(.headline)
+                        .frame(width: 200, height: 50)
                         .background(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.linearGradient(colors: [.red, .pink], startPoint: .top, endPoint: .bottomTrailing))
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(.linearGradient(colors: [.customWine, .customRed], startPoint: .leading, endPoint: .bottomTrailing))
                         )
                         .foregroundStyle(.white)
                 }
-                .padding(.top)
                 .offset(y: 100)
                 
                 Button {
@@ -79,9 +155,8 @@ struct LoginView: View {
                         .bold()
                         .foregroundStyle(.white)
                 }
-                .padding(.top)
                 .offset(y: 110)
-            }
+            
             .frame(width: 350)
         }
         .ignoresSafeArea()
@@ -89,6 +164,8 @@ struct LoginView: View {
             RegistrationView()
                 .environmentObject(authManager)
         }
+        }
+        .ignoresSafeArea()
     }
 }
 
