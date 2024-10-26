@@ -86,6 +86,8 @@ struct CustomTextField: View {
                         .frame(height: 1)
                         .foregroundColor(.white.opacity(0.5))
                 }
+        .padding(.horizontal, 25)
+        .padding(.vertical, 10) //added padding for email/password, adjust here
             }
         }
 
@@ -137,7 +139,7 @@ struct LoginView: View {
                 Button {
                     authManager.login(email: email, password: password)
                 } label: {
-                    Text("Login")
+                    Text("Log In")
                         .font(.headline)
                         .frame(width: 200, height: 50)
                         .background(

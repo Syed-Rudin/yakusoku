@@ -1,11 +1,17 @@
 # Xcode
 *.xcodeproj/project.xcworkspace/xcuserdata/
+<<<<<<< HEAD
 *.xcuserdata/
+=======
+>>>>>>> login-ui
 *.xcuserdatad/
 *.xcuserstate
 UserInterfaceState.xcuserstate
 
 # General macOS
 .DS_Store
+<<<<<<< HEAD
 .AppleDouble
 .LSOverride
+=======
+>>>>>>> login-ui

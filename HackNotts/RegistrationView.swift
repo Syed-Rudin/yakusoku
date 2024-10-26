@@ -55,10 +55,10 @@ struct RegistrationView: View {
                     CustomTextField("Password", text: $password, isSecure: true)
                     
                     CustomTextField("Confirm Password", text: $confirmPassword, isSecure: true)
-                    
                 }
+                .padding(.horizontal, 25)
+                .padding(.vertical, 10)  //added padding for email/password, adjust here
 
-                
                 // Action buttons
                 Button {
                     signUp()
@@ -72,9 +72,8 @@ struct RegistrationView: View {
                                                       startPoint: .leading, 
                                                       endPoint: .bottomTrailing))
                         )
-                        .foregroundStyle(.white)
-        
                 }
+                .foregroundStyle(.white)
                 .disabled(!isFormValid)
                 .opacity(isFormValid ? 1 : 0.6)
                 .offset(y: 40)
