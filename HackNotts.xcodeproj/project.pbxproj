@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		4B4D7B382CCD03BA0062ADC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B4D7B1F2CCD03B90062ADC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B4D7B262CCD03B90062ADC9;
+			remoteInfo = HackNotts;
+		};
+		4B4D7B422CCD03BA0062ADC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B4D7B1F2CCD03B90062ADC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B4D7B262CCD03B90062ADC9;
+			remoteInfo = HackNotts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B4D7B272CCD03B90062ADC9 /* HackNotts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackNotts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4D7B372CCD03BA0062ADC9 /* HackNottsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackNottsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4D7B412CCD03BA0062ADC9 /* HackNottsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackNottsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4B4D7B292CCD03B90062ADC9 /* HackNotts */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HackNotts;
+			sourceTree = "<group>";
+		};
+		4B4D7B3A2CCD03BA0062ADC9 /* HackNottsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HackNottsTests;
+			sourceTree = "<group>";
+		};
+		4B4D7B442CCD03BA0062ADC9 /* HackNottsUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HackNottsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B4D7B242CCD03B90062ADC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B342CCD03BA0062ADC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B3E2CCD03BA0062ADC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B4D7B1E2CCD03B90062ADC9 = {
+			isa = PBXGroup;
+			children = (
+				4B4D7B292CCD03B90062ADC9 /* HackNotts */,
+				4B4D7B3A2CCD03BA0062ADC9 /* HackNottsTests */,
+				4B4D7B442CCD03BA0062ADC9 /* HackNottsUITests */,
+				4B4D7B282CCD03B90062ADC9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B4D7B282CCD03B90062ADC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B4D7B272CCD03B90062ADC9 /* HackNotts.app */,
+				4B4D7B372CCD03BA0062ADC9 /* HackNottsTests.xctest */,
+				4B4D7B412CCD03BA0062ADC9 /* HackNottsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B4D7B262CCD03B90062ADC9 /* HackNotts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B4D7B4B2CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNotts" */;
+			buildPhases = (
+				4B4D7B232CCD03B90062ADC9 /* Sources */,
+				4B4D7B242CCD03B90062ADC9 /* Frameworks */,
+				4B4D7B252CCD03B90062ADC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4B4D7B292CCD03B90062ADC9 /* HackNotts */,
+			);
+			name = HackNotts;
+			packageProductDependencies = (
+			);
+			productName = HackNotts;
+			productReference = 4B4D7B272CCD03B90062ADC9 /* HackNotts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B4D7B362CCD03BA0062ADC9 /* HackNottsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B4D7B4E2CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNottsTests" */;
+			buildPhases = (
+				4B4D7B332CCD03BA0062ADC9 /* Sources */,
+				4B4D7B342CCD03BA0062ADC9 /* Frameworks */,
+				4B4D7B352CCD03BA0062ADC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B4D7B392CCD03BA0062ADC9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4B4D7B3A2CCD03BA0062ADC9 /* HackNottsTests */,
+			);
+			name = HackNottsTests;
+			packageProductDependencies = (
+			);
+			productName = HackNottsTests;
+			productReference = 4B4D7B372CCD03BA0062ADC9 /* HackNottsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B4D7B402CCD03BA0062ADC9 /* HackNottsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B4D7B512CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNottsUITests" */;
+			buildPhases = (
+				4B4D7B3D2CCD03BA0062ADC9 /* Sources */,
+				4B4D7B3E2CCD03BA0062ADC9 /* Frameworks */,
+				4B4D7B3F2CCD03BA0062ADC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B4D7B432CCD03BA0062ADC9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4B4D7B442CCD03BA0062ADC9 /* HackNottsUITests */,
+			);
+			name = HackNottsUITests;
+			packageProductDependencies = (
+			);
+			productName = HackNottsUITests;
+			productReference = 4B4D7B412CCD03BA0062ADC9 /* HackNottsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B4D7B1F2CCD03B90062ADC9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					4B4D7B262CCD03B90062ADC9 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					4B4D7B362CCD03BA0062ADC9 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 4B4D7B262CCD03B90062ADC9;
+					};
+					4B4D7B402CCD03BA0062ADC9 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 4B4D7B262CCD03B90062ADC9;
+					};
+				};
+			};
+			buildConfigurationList = 4B4D7B222CCD03B90062ADC9 /* Build configuration list for PBXProject "HackNotts" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B4D7B1E2CCD03B90062ADC9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4B4D7B282CCD03B90062ADC9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B4D7B262CCD03B90062ADC9 /* HackNotts */,
+				4B4D7B362CCD03BA0062ADC9 /* HackNottsTests */,
+				4B4D7B402CCD03BA0062ADC9 /* HackNottsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B4D7B252CCD03B90062ADC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B352CCD03BA0062ADC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B3F2CCD03BA0062ADC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B4D7B232CCD03B90062ADC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B332CCD03BA0062ADC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4D7B3D2CCD03BA0062ADC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B4D7B392CCD03BA0062ADC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B4D7B262CCD03B90062ADC9 /* HackNotts */;
+			targetProxy = 4B4D7B382CCD03BA0062ADC9 /* PBXContainerItemProxy */;
+		};
+		4B4D7B432CCD03BA0062ADC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B4D7B262CCD03B90062ADC9 /* HackNotts */;
+			targetProxy = 4B4D7B422CCD03BA0062ADC9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4B4D7B492CCD03BA0062ADC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4B4D7B4A2CCD03BA0062ADC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B4D7B4C2CCD03BA0062ADC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HackNotts/Preview Content\"";
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNotts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B4D7B4D2CCD03BA0062ADC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HackNotts/Preview Content\"";
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNotts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4B4D7B4F2CCD03BA0062ADC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNottsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HackNotts.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HackNotts";
+			};
+			name = Debug;
+		};
+		4B4D7B502CCD03BA0062ADC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNottsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HackNotts.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HackNotts";
+			};
+			name = Release;
+		};
+		4B4D7B522CCD03BA0062ADC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNottsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HackNotts;
+			};
+			name = Debug;
+		};
+		4B4D7B532CCD03BA0062ADC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2S24SN8RYX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrudin.HackNottsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HackNotts;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B4D7B222CCD03B90062ADC9 /* Build configuration list for PBXProject "HackNotts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4D7B492CCD03BA0062ADC9 /* Debug */,
+				4B4D7B4A2CCD03BA0062ADC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B4D7B4B2CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNotts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4D7B4C2CCD03BA0062ADC9 /* Debug */,
+				4B4D7B4D2CCD03BA0062ADC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B4D7B4E2CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNottsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4D7B4F2CCD03BA0062ADC9 /* Debug */,
+				4B4D7B502CCD03BA0062ADC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B4D7B512CCD03BA0062ADC9 /* Build configuration list for PBXNativeTarget "HackNottsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4D7B522CCD03BA0062ADC9 /* Debug */,
+				4B4D7B532CCD03BA0062ADC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B4D7B1F2CCD03B90062ADC9 /* Project object */;
+}
