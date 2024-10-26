@@ -48,6 +48,9 @@ struct ContractListView: View {
             .sheet(isPresented: $showPopup) {
                 NewContractView()
             }
+            .onAppear {
+                dataManager.fetchContracts()
+            }
         }
     }
 }

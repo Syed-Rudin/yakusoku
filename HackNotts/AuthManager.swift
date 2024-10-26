@@ -19,7 +19,6 @@ class AuthManager: ObservableObject {
     }
     
     init() {
-        // Set up Firebase auth listener
         Auth.auth().addStateDidChangeListener { auth, user in
             DispatchQueue.main.async {
                 self.isLoggedIn = user != nil
