@@ -103,7 +103,7 @@ struct LoginView: View {
                                 .foregroundColor(.white)
                         )
                     
-                    Text(isLogin ? "Welcome back" : "Create account")
+                    Text("Welcome back" )
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -115,9 +115,6 @@ struct LoginView: View {
                     
                     CustomTextField("Password", text: $password, isSecure: true)
                     
-                    if !isLogin {
-                        // Additional signup fields could go here
-                    }
                 }
                 .padding(.horizontal, 24)
                 
