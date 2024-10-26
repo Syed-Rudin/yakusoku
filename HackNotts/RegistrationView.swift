@@ -20,10 +20,10 @@ struct RegistrationView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [.customWine, .customDarkPurple]),
+                gradient: Gradient(colors: [.customRed, .customWine]),
                 startPoint: .leading,
                 endPoint: .trailing
-            )
+                )
             
             VStack(spacing: 32) {
                 // Logo and welcome text
@@ -48,15 +48,16 @@ struct RegistrationView: View {
                 
                 // Form fields
                 VStack(spacing: 24) {
-                    CustomTextField("Email address", text: $email)
+                    CustomTextField("Your Email", text: $email)
                     
                     CustomTextField("Full name", text: $name)
                     
                     CustomTextField("Password", text: $password, isSecure: true)
                     
                     CustomTextField("Confirm Password", text: $confirmPassword, isSecure: true)
+                    
                 }
-                .padding(.horizontal, 24)
+
                 
                 // Action buttons
                 Button {
@@ -67,11 +68,12 @@ struct RegistrationView: View {
                         .frame(width: 200, height: 50)
                         .background(
                             RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                .fill(.linearGradient(colors: [.customWine, .customRed],
-                                                    startPoint: .leading,
-                                                    endPoint: .bottomTrailing))
+                                .fill(.linearGradient(colors: [.customRed, .customOrange], 
+                                                      startPoint: .leading, 
+                                                      endPoint: .bottomTrailing))
                         )
                         .foregroundStyle(.white)
+        
                 }
                 .disabled(!isFormValid)
                 .opacity(isFormValid ? 1 : 0.6)
