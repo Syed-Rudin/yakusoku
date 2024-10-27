@@ -30,12 +30,22 @@ struct ContractListView: View {
     
     var body: some View {
         NavigationView {
+            
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 20) {
+                    
+                    Text("今日の約束")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.white)
+                    
                     // My Promises Section
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text("My Promises")
+                                .foregroundColor(.white)
                                 .font(.title3)
                                 .bold()
                             Spacer()
@@ -63,6 +73,7 @@ struct ContractListView: View {
                     // Friends' Promises Section
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Friends' Promises")
+                            .foregroundColor(.white)
                             .font(.title3)
                             .bold()
                             .padding(.horizontal)
@@ -84,6 +95,7 @@ struct ContractListView: View {
                     // History Section
                     VStack(alignment: .leading, spacing: 8) {
                         Text("History")
+                            .foregroundColor(.white)
                             .font(.title3)
                             .bold()
                             .padding(.horizontal)
@@ -99,7 +111,7 @@ struct ContractListView: View {
                 }
                 .padding(.vertical)
             }
-            .navigationTitle("今日の約束")
+            .background(Color.customDarkPurple)
             .sheet(isPresented: $showPopup) {
                 NewPromiseView()
             }
@@ -125,11 +137,12 @@ struct PromiseCard: View {
             Text(contract.name)
                 .font(.headline)
                 .lineLimit(2)
+                .foregroundColor(.white)
             
             Text("$\(contract.amount, specifier: "%.2f")")
                 .font(.title2)
                 .bold()
-                .foregroundColor(.blue)
+                .foregroundColor(.white)
             
             HStack {
                 Image(systemName: "clock")
@@ -192,8 +205,8 @@ struct PromiseCard: View {
             }
         }
         .padding()
-        .frame(width: 200)
-        .background(Color(.systemBackground))
+        .frame(width: 200, height: 200)
+        .background(Color.white.opacity(0.1))
         .cornerRadius(12)
         .shadow(radius: 2)
     }
@@ -209,8 +222,8 @@ struct EmptyPromiseCard: View {
             Text(message)
                 .foregroundColor(.gray)
         }
-        .frame(width: 200, height: 150)
-        .background(Color(.systemBackground))
+        .frame(width: 200, height: 200)  
+        .background(Color.white.opacity(0.1))
         .cornerRadius(12)
         .shadow(radius: 2)
     }
@@ -224,6 +237,7 @@ struct HistoryRow: View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(contract.name)
+                    .foregroundColor(.black)
                     .font(.headline)
                 if let completedDate = contract.completedDate {
                     Text(completedDate, style: .date)
@@ -345,7 +359,6 @@ struct ContractRow: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
         .cornerRadius(10)
         .shadow(radius: 1)
     }

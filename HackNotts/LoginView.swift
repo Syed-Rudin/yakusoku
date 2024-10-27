@@ -63,9 +63,9 @@ struct CustomTextField: View {
                     if isSecure {
                         SecureField("", text: text)
                             .textFieldStyle(.plain)
-                            .foregroundColor(.white) // Text color while typing
-                            .accentColor(.white)     // Cursor color
-                            .colorMultiply(.white)   // Ensures consistent color
+                            .foregroundColor(.white)
+                            .accentColor(.white)
+                            .colorMultiply(.white)
                             .placeholder(when: text.wrappedValue.isEmpty) {
                                 Text(title)
                                     .foregroundColor(.white.opacity(0.7))
@@ -73,9 +73,9 @@ struct CustomTextField: View {
                     } else {
                         TextField("", text: text)
                             .textFieldStyle(.plain)
-                            .foregroundColor(.white) // Text color while typing
-                            .accentColor(.white)     // Cursor color
-                            .colorMultiply(.white)   // Ensures consistent color
+                            .foregroundColor(.white)
+                            .accentColor(.white)
+                            .colorMultiply(.white)
                             .placeholder(when: text.wrappedValue.isEmpty) {
                                 Text(title)
                                     .foregroundColor(.white.opacity(0.7))
@@ -87,7 +87,7 @@ struct CustomTextField: View {
                         .foregroundColor(.white.opacity(0.5))
                 }
         .padding(.horizontal, 25)
-        .padding(.vertical, 10) //added padding for email/password, adjust here
+        .padding(.vertical, 10)
             }
         }
 
