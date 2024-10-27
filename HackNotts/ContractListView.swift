@@ -99,16 +99,16 @@ struct ContractListView: View {
                 .padding(.vertical)
             }
             .navigationTitle("今日の約束")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        authManager.signOut()
-                    }) {
-                        Image(systemName: "rectangle.portrait.and.arrow.right")
-                            .foregroundColor(.primary)
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button(action: {
+//                        authManager.signOut()
+//                    }) {
+//                        Image(systemName: "rectangle.portrait.and.arrow.right")
+//                            .foregroundColor(.primary)
+//                    }
+//                }
+//            }
             .sheet(isPresented: $showPopup) {
                 NewPromiseView()
             }
