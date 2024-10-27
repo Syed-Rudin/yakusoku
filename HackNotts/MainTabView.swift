@@ -34,10 +34,12 @@ struct MainTabView: View {
                 }
                 .tag(2)
         }
-        .accentColor(.blue)  // Or any color you prefer for the selected tab
+        .accentColor(.blue)
     }
 }
 
 #Preview {
     MainTabView()
+        .environmentObject(AuthManager())
+        .environmentObject(DataManager())
 }
