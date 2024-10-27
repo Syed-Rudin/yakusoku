@@ -86,7 +86,7 @@ struct ContractListView: View {
                 }
             }
             .sheet(isPresented: $showPopup) {
-                NewContractView()
+                NewPromiseView()
             }
             .onAppear {
                 dataManager.fetchContracts()
