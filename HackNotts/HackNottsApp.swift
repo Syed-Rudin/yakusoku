@@ -20,12 +20,12 @@ struct HackNottsApp: App {
     var body: some Scene {
         WindowGroup {
             if authManager.isLoggedIn {
-                ContractListView()
+                MainTabView()
                     .environmentObject(authManager)
                     .environmentObject(dataManager)
-                    .onAppear {
-                        authManager.setDataManager(dataManager)
-                    }
+//                    .onAppear {
+//                        authManager.setDataManager(dataManager)
+//                    }
             } else {
                 LoginView()
                     .environmentObject(authManager)
