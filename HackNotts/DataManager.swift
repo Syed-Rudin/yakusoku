@@ -12,7 +12,82 @@ import FirebaseAuth
 class DataManager: ObservableObject {
     @Published var contracts: [Contract] = []
     @Published var users: [User] = []
+    @Published var friends: [Friend] = []
     
+    private var friendIds: Set<String> {
+            Set(friends.map { $0.friendId })
+    }
+
+    func fetchFriends() {
+            guard let userId = Auth.auth().currentUser?.uid else { return }
+            
+            let db = Firestore.firestore()
+            db.collection("Friends")
+                .whereField("userId", isEqualTo: userId)
+                .getDocuments { snapshot, error in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    if let snapshot = snapshot {
+                        self.friends = snapshot.documents.map { document in
+                            let data = document.data()
+                            return Friend(
+                                id: document.documentID,
+                                userId: data["userId"] as? String ?? "",
+                                friendId: data["friendId"] as? String ?? "",
+                                dateAdded: (data["dateAdded"] as? Timestamp)?.dateValue() ?? Date()
+                            )
+                        }
+                    }
+                }
+        }
+        
+        func addFriend(friendId: String) {
+            guard let userId = Auth.auth().currentUser?.uid else { return }
+            
+            let db = Firestore.firestore()
+            let ref = db.collection("Friends").document()
+            
+            let data: [String: Any] = [
+                "userId": userId,
+                "friendId": friendId,
+                "dateAdded": Timestamp(date: Date())
+            ]
+            
+            ref.setData(data) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    self.fetchFriends()
+                }
+            }
+        }
+        
+        func removeFriend(friendId: String) {
+            guard let userId = Auth.auth().currentUser?.uid else { return }
+            
+            let db = Firestore.firestore()
+            db.collection("Friends")
+                .whereField("userId", isEqualTo: userId)
+                .whereField("friendId", isEqualTo: friendId)
+                .getDocuments { snapshot, error in
+                    if let document = snapshot?.documents.first {
+                        document.reference.delete { error in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else {
+                                self.fetchFriends()
+                            }
+                        }
+                    }
+                }
+        }
+        
+        func isFriend(_ userId: String) -> Bool {
+            friendIds.contains(userId)
+        }
     
     func fetchUsers() {
         let db = Firestore.firestore()
@@ -158,6 +233,8 @@ class DataManager: ObservableObject {
                    }
                }
        }
+    
+    
 }
 
 extension DataManager {
@@ -179,4 +256,3 @@ extension DataManager {
         }
     }
 }
-

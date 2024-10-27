@@ -23,9 +23,9 @@ struct HackNottsApp: App {
                 MainTabView()
                     .environmentObject(authManager)
                     .environmentObject(dataManager)
-//                    .onAppear {
-//                        authManager.setDataManager(dataManager)
-//                    }
+                    .onAppear {
+                        authManager.setDataManager(dataManager)
+                    }
             } else {
                 LoginView()
                     .environmentObject(authManager)
