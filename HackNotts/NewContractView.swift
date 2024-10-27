@@ -59,6 +59,8 @@ struct NewPromiseView: View {
                                 .background(Color.white.opacity(0.1))
                                 .cornerRadius(8)
                                 .foregroundColor(.white)
+                                .tint(.white)  // This changes the cursor color
+                                .scrollContentBackground(.hidden)  // This removes the white background
                                 .onChange(of: description) { newValue in
                                     if newValue.count > 100 {
                                         description = String(newValue.prefix(100))
