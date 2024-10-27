@@ -51,7 +51,13 @@ struct FriendsListView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack(spacing: 0) {
+                Text("Friends")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
                 // Search Bar
                 SearchBar(text: $searchText)
                     .padding()
@@ -60,25 +66,39 @@ struct FriendsListView: View {
                     // Search Results
                     List(searchResults) { user in
                         UserRow(user: user)
+                            .listRowInsets(EdgeInsets()) // Remove default padding
+                            .listRowBackground(Color.customDarkPurple) // Match background
+                            .listRowSeparator(.hidden) // Hide separators
                     }
+                    .listStyle(PlainListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Color.customDarkPurple)
                 } else {
                     // Alphabetical Friends List
                     List {
                         ForEach(groupedFriends, id: \.0) { section in
-                            Section(header: Text(section.0)) {
+                            Section(header: Text(section.0)
+                                .foregroundColor(.white)) {
                                 ForEach(section.1) { user in
                                     UserRow(user: user)
+                                        .listRowInsets(EdgeInsets())
+                                        .listRowBackground(Color.customDarkPurple)
+                                        .listRowSeparator(.hidden) 
                                 }
                             }
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Color.customDarkPurple)
                 }
             }
-            .navigationTitle("Friends")
-            .onAppear {
-                dataManager.fetchUsers()
-                dataManager.fetchFriends()
-            }
+            
+                .background(Color.customDarkPurple)
+                .onAppear {
+                    dataManager.fetchUsers()
+                    dataManager.fetchFriends()
+                }
         }
     }
 }
@@ -89,18 +109,23 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
+                .foregroundColor(.customOrange)
             
             TextField("Search users...", text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(PlainTextFieldStyle())
+                    .padding(8)
+                    .background(Color.black)
+                    .cornerRadius(8)
+                    .foregroundColor(.white)
             
             if !text.isEmpty {
                 Button(action: { text = "" }) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.customRed)
                 }
             }
         }
+        .background(Color.customDarkPurple)
     }
 }
 
@@ -114,10 +139,12 @@ struct UserRow: View {
             VStack(alignment: .leading) {
                 Text(user.name)
                     .font(.headline)
+                    .foregroundColor(.white)
                 Text(user.email)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.customOrange)
             }
+
             
             Spacer()
             
@@ -126,23 +153,26 @@ struct UserRow: View {
                     showingActionSheet = true
                 }) {
                     Image(systemName: "person.badge.minus")
-                        .foregroundColor(.red)
+                        .foregroundColor(.customRed)
                 }
             } else {
                 Button(action: {
                     dataManager.addFriend(friendId: user.id)
                 }) {
                     Image(systemName: "person.badge.plus")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.customWine)
                 }
             }
         }
+        .padding(.horizontal)
+        .frame(maxWidth: .infinity)
+        .background(Color.customDarkPurple)
         .actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(
-                title: Text("Remove Friend"),
-                message: Text("Are you sure you want to remove this friend?"),
+                title: Text("Remove Friend").foregroundColor(.white),
+                message: Text("Are you sure you want to remove this friend?").foregroundColor(.white),
                 buttons: [
-                    .destructive(Text("Remove")) {
+                    .destructive(Text("Remove").foregroundColor(.customRed)) {
                         dataManager.removeFriend(friendId: user.id)
                     },
                     .cancel()
@@ -155,4 +185,5 @@ struct UserRow: View {
 #Preview {
     FriendsListView()
         .environmentObject(DataManager())
+        .preferredColorScheme(.dark)
 }

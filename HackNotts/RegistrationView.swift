@@ -11,7 +11,7 @@ struct RegistrationView: View {
     @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
     @State private var email = ""
-    @State private var name = ""  // Added name field
+    @State private var name = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var showError = false
@@ -57,7 +57,7 @@ struct RegistrationView: View {
                     CustomTextField("Confirm Password", text: $confirmPassword, isSecure: true)
                 }
                 .padding(.horizontal, 25)
-                .padding(.vertical, 10)  //added padding for email/password, adjust here
+                .padding(.vertical, 10) 
 
                 // Action buttons
                 Button {
