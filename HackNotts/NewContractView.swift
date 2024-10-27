@@ -17,6 +17,17 @@ struct NewContractView: View {
     @State private var showingUserPicker = false
     @State private var selectedPartnerId = ""
     @State private var selectedPartnerName = "Select Partner"
+    @State private var dueDate = defaultDueDate()  // Set default date
+    @State private var includeTime = false  // Toggle for time selection
+    
+    // Default due date is tomorrow at 12 PM
+    static func defaultDueDate() -> Date {
+        var components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        components.day! += 1  // Tomorrow
+        components.hour = 12  // 12 PM
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date()
+    }
     
     var body: some View {
         NavigationView {
@@ -38,6 +49,25 @@ struct NewContractView: View {
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
                         }
+                    }
+                }
+                
+                Section(header: Text("Due Date")) {
+                    Toggle("Include specific time", isOn: $includeTime)
+                    
+                    if includeTime {
+                        DatePicker(
+                            "Due Date",
+                            selection: $dueDate,
+                            in: Date()...  // Only future dates
+                        )
+                    } else {
+                        DatePicker(
+                            "Due Date",
+                            selection: $dueDate,
+                            in: Date()...,  // Only future dates
+                            displayedComponents: [.date]
+                        )
                     }
                 }
             }
@@ -65,16 +95,29 @@ struct NewContractView: View {
     
     private func saveContract() {
         if let amountDouble = Double(amount) {
+            // If no specific time is selected, set it to noon
+            let finalDueDate: Date
+            if !includeTime {
+                var components = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
+                components.hour = 12
+                components.minute = 0
+                finalDueDate = Calendar.current.date(from: components) ?? dueDate
+            } else {
+                finalDueDate = dueDate
+            }
+            
             dataManager.addContract(
                 name: name,
                 description: description,
                 amount: amountDouble,
-                partnerId: selectedPartnerId
+                partnerId: selectedPartnerId,
+                dueDate: finalDueDate
             )
             dismiss()
         }
     }
 }
+
 
 struct UserPickerView: View {
     @Environment(\.dismiss) var dismiss

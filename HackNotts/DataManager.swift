@@ -86,67 +86,73 @@ class DataManager: ObservableObject {
         }
     }
     
-    func addContract(name: String, description: String, amount: Double, partnerId: String) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            print("No user logged in")
-            return
-        }
-        
-        let db = Firestore.firestore()
-        let ref = db.collection("Contracts").document()
-        
-        let data: [String: Any] = [
-            "name": name,
-            "description": description,
-            "amount": amount,
-            "partnerId": partnerId,  
-            "isCompleted": false,
-            "userId": userId
-        ]
-        
-        ref.setData(data) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                self.fetchContracts()
+    func addContract(name: String, description: String, amount: Double, partnerId: String, dueDate: Date) {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                print("No user logged in")
+                return
+            }
+            
+            let db = Firestore.firestore()
+            let ref = db.collection("Contracts").document()
+            
+            let data: [String: Any] = [
+                "name": name,
+                "description": description,
+                "amount": amount,
+                "partnerId": partnerId,
+                "isCompleted": false,
+                "userId": userId,
+                "dueDate": Timestamp(date: dueDate)  // Convert Date to Timestamp for Firestore
+            ]
+            
+            ref.setData(data) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    self.fetchContracts()
+                }
             }
         }
-    }
-    
-    func fetchContracts() {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            print("No user logged in")
-            return
-        }
         
-        contracts.removeAll()
-        let db = Firestore.firestore()
-        
-        db.collection("Contracts")
-            .whereFilter(Filter.orFilter([
-                Filter.whereField("userId", isEqualTo: userId),
-                Filter.whereField("partnerId", isEqualTo: userId)
-            ]))
-            .getDocuments { snapshot, error in
-                guard error == nil else {
-                    print(error!.localizedDescription)
-                    return
-                }
-                
-                if let snapshot = snapshot {
-                    self.contracts = snapshot.documents.map { document in
-                        let data = document.data()
-                        return Contract(
-                            id: document.documentID,  // Use document ID for unique identifier
-                            name: data["name"] as? String ?? "",
-                            description: data["description"] as? String ?? "",
-                            amount: data["amount"] as? Double ?? 0.0,
-                            partnerId: data["partnerId"] as? String ?? "",
-                            isCompleted: data["isCompleted"] as? Bool ?? false,
-                            userId: data["userId"] as? String ?? ""
-                        )
+        func fetchContracts() {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                print("No user logged in")
+                return
+            }
+            
+            contracts.removeAll()
+            let db = Firestore.firestore()
+            
+            db.collection("Contracts")
+                .whereFilter(Filter.orFilter([
+                    Filter.whereField("userId", isEqualTo: userId),
+                    Filter.whereField("partnerId", isEqualTo: userId)
+                ]))
+                .getDocuments { snapshot, error in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    if let snapshot = snapshot {
+                        self.contracts = snapshot.documents.map { document in
+                            let data = document.data()
+                            
+                            let timestamp = data["dueDate"] as? Timestamp
+                            let dueDate = timestamp?.dateValue() ?? Date()  // Convert Timestamp back to Date
+                            
+                            return Contract(
+                                id: document.documentID,
+                                name: data["name"] as? String ?? "",
+                                description: data["description"] as? String ?? "",
+                                amount: data["amount"] as? Double ?? 0.0,
+                                partnerId: data["partnerId"] as? String ?? "",
+                                isCompleted: data["isCompleted"] as? Bool ?? false,
+                                userId: data["userId"] as? String ?? "",
+                                dueDate: dueDate
+                            )
+                        }
                     }
                 }
-            }
-    }
+        }
 }

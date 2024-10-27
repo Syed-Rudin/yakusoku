@@ -99,23 +99,43 @@ struct ContractListView: View {
 struct ContractRow: View {
     let contract: Contract
     
+    private var isOverdue: Bool {
+        !contract.isCompleted && contract.dueDate < Date()
+    }
+    
+    private var formattedDueDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: contract.dueDate)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(contract.name)
                 .font(.headline)
             Text("$\(contract.amount, specifier: "%.2f")")
                 .foregroundColor(.blue)
+            
+            HStack {
+                Image(systemName: "clock")
+                    .foregroundColor(isOverdue ? .red : .gray)
+                Text(formattedDueDate)
+                    .font(.caption)
+                    .foregroundColor(isOverdue ? .red : .gray)
+            }
+            
             if contract.isCompleted {
                 Text("Completed ✓")
                     .foregroundColor(.green)
                     .font(.caption)
+            } else if isOverdue {
+                Text("Overdue!")
+                    .foregroundColor(.red)
+                    .font(.caption)
             }
         }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(10)
-        .shadow(radius: 1)
-        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
 }
 

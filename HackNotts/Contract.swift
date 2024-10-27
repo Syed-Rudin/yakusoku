@@ -15,5 +15,6 @@ struct Contract: Identifiable {
     var partnerId: String
     var isCompleted: Bool
     var userId: String
+    var dueDate: Date
 }
 
